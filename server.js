@@ -3,8 +3,10 @@ const app = express();
 const mongoose = require('mongoose');
 const User = require('./models/User');
 
+require("dotenv").config({path:"./config/.env"});
+app.use(express.json());
 
-mongoose.connect('mongodb+srv://issamefar58:issamassi123@cluster0.jnz5nwy.mongodb.net/contact', { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.DB_CONNECTION_STRING, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => {
         console.log("Database connected successfully");
     })
